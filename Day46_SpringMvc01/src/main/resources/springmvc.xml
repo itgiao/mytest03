@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--配置拦截器-->
+    <!--<mvc:interceptors>
+        <mvc:interceptor>
+            &lt;!&ndash; /**表示所有后代， /*表示子级 &ndash;&gt;
+            <mvc:mapping path="/**"/>
+            <bean class="com.itheima.interceptor.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>-->
+
+    <!--配置拦截器链-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/show01"/>
+            <bean class="com.itheima.interceptor.MyInterceptor01"/>
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/show01"/>
+            <bean class="com.itheima.interceptor.MyInterceptor02"/>
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <mvc:mapping path="/show01"/>
+            <bean class="com.itheima.interceptor.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <context:component-scan base-package="com.itheima"/>
+    <mvc:annotation-driven/>
+    <mvc:default-servlet-handler/>
+
+    <!--配置springmvc提供的简单异常处理器-->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+
+        <!--通用的错误页面，不管出现什么异常，都会跑到这个错误页面-->
+        <property name="defaultErrorView" value="/error02.jsp"/>
+
+        <!--
+            1. 配置具体的异常显示具体的页面，他们是一一对应的关系。
+            2. 虽然上面也配置了通用的异常显示页面，但是如果真的出现了下面配置的异常，那么就会以下面的配置为准
+                如果下面没有对应的，那么就以上面默认的异常页面为准
+         -->
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.NullPointerException">/nullpoint.jsp</prop>
+                <prop key="java.lang.ClassCastException">/error02.jsp</prop>
+                <prop key="java.lang.RuntimeException">/error02.jsp</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>

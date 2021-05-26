@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+<!--要打开注解的扫描开关-->
+    <context:component-scan base-package="com.itheima"/>
+    <!--导入db配置文件-->
+    <context:property-placeholder location="db.properties"/>
+    <!--让spring持有datasource：主要是为了能够在在事务管理中 注入-->
+    <bean id="ds" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${driverClass}"/>
+        <property name="jdbcUrl" value="${jdbcUrl}"/>
+        <property name="user" value="${user}"/>
+        <property name="password" value="${password}"/>
+    </bean>
+
+    <!--让spring持有queryRunner：主要是为了dao层注入因为在dao层里面执行
+    操作的时候，我们手动给啦connection对象-->
+    <bean id="queryRunner" class="org.apache.commons.dbutils.QueryRunner"/>
+</beans>

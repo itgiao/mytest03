@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+<!--引入外部的配置文件，记得要加上classpath：-->
+    <context:property-placeholder location="classpath:db.properties"/>
+    <!--配置数据源-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${driverClass}"/>
+        <property name="jdbcUrl" value="${jdbcUrl}"/>
+        <property name="user" value="${user}"/>
+        <property name="password" value="${password}"/>
+    </bean>
+    <!--让spring创建sqlSessionFactory：-->
+    <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!--给javabean起别名-->
+        <property name="typeAliasesPackage" value="com.itheima.bean"/>
+    </bean>
+    <!--
+     3. 配置扫描包 : 这段配置顶替掉了SQLMapConfig里面的 mappers的配置
+         3.1 这段配置主要是用来指定dao的包。
+  -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.itheima.dao"/>
+    </bean>
+    <!--
+    4. 配置事务
+        4.1 配置管理员，
+            如果dao层使用的技术是jdbc|muybatis ,那么使用的管理员：DataSourceTransactionManager
+            如果使用的技术是Hibernate ,那么使用的管理员：HibernateTransactionManager
+
+        4.2 配置事务的注解开关
+ -->
+    <bean id="tm" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="tm"/>
+
+    <!--下面使用xml的方式来配置事务-->
+    <tx:advice id="myAdvice" transaction-manager="tm">
+        <tx:attributes>
+            <tx:method name="*" />
+        </tx:attributes>
+    </tx:advice>
+
+    <!--配置切面-->
+    <aop:config>
+        <aop:advisor advice-ref="myAdvice" pointcut="execution(* com.itheima.service.impl.*.*(..))"/>
+    </aop:config>
+
+</beans>

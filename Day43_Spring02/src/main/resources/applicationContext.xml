@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <!--把UserServiceImpl和Advice这两个类交个spring管理-->
+    <bean id="us" class="com.itheima.service.impl.UserServiceImpl"/>
+    <bean id="myAdvice" class="com.itheima.aop.MyAdvice"/>
+
+    <!--配置aop：就是告诉spring要把advice里面的print方法增强到userServiceImpl的add里面-->
+    <aop:config>
+        <!--aop:aspect:用来配置切面
+        ref：要指定通或者增强的对象
+        before：表示要做前置增强
+        method：用print方法来增强它
+        pointcut：切入点,根据里面的表达式去找具体的方法-->
+        <aop:aspect ref="myAdvice">
+            <aop:before method="print" pointcut="execution(* com.itheima.service.impl.UserServiceImpl.add(..))"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>

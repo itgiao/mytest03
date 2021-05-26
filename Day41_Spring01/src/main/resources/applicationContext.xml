@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--bean标签作用：告诉spring要创建哪个对象
+    属性：id 给这个类起个名字，必须是唯一标识以后我们问spring的工厂要
+    对象。就拿着别名来要即可。
+    class： 实现类的全路径-->
+    <bean id="us" class="com.itheima.service.impl.UserServiceImpl">
+        <property name="userDao" ref="ud"/>
+    </bean>
+    <!--1. 托管UserDaoImpl-->
+    <bean id="ud" class="com.itheima.dao.impl.UserDaoImpl"/>
+
+</beans>

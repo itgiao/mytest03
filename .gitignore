@@ -1,0 +1,27 @@
+# Project exclude paths
+/day38_mvc02/target/
+/Day38_面面/target/
+/day39_mm/target/
+/Day39_mmProgram/target/
+/Day41_Spring/target/
+/Day41_Spring01/target/
+/Day41_Spring02/target/
+/Day41_spring_CURD/target/
+/Day42_Spring/target/
+/Day42_Spring01/target/
+/Day42_Spring_CURD/target/
+/Day43_Spring01/target/
+/Day43_Spring02/target/
+/Day43_Spring03/target/
+/Day43_Spring04/target/
+/Day43_Spring05/target/
+/Day43_Spring06/target/
+/Day43_Spring07/target/
+/Day44_MVC/target/
+/Day44_MVC01/target/
+/Day44_MVC02/target/
+/Day45_MVC01/target/
+/Day45_MVC02/target/
+/Day46_SpringMvc01/target/
+/Day46_SpringMvc02/target/
+/Day46_SpringMvc03/target/

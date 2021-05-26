@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Day38" />
+        <module name="day38_mvc02" />
+        <module name="Day44_MVC01" />
+        <module name="Day44_MVC02" />
+        <module name="Day41_Spring02" />
+        <module name="Day46_SpringMvc03" />
+        <module name="Day41_Spring01" />
+        <module name="Day46_SpringMvc02" />
+        <module name="Day46_SpringMvc01" />
+        <module name="Day42_Spring_CURD" />
+        <module name="Day44_MVC" />
+        <module name="Day42_Spring01" />
+        <module name="day39_mm" />
+        <module name="Day45_MVC01" />
+        <module name="Day45_MVC02" />
+        <module name="Day43_Spring01" />
+        <module name="Day41_Spring" />
+        <module name="Day42_Spring" />
+        <module name="Day43_Spring02" />
+        <module name="Day41_spring_CURD" />
+        <module name="Day43_Spring03" />
+        <module name="Day43_Spring04" />
+        <module name="Day43_Spring05" />
+        <module name="Day43_Spring06" />
+        <module name="day41_spring01" />
+        <module name="Day43_Spring07" />
+        <module name="Day39_mmProgram" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="day41_spring04" target="1.5" />
+      <module name="linkmanSys" target="1.8" />
+      <module name="xxxx" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

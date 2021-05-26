@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+        <!--导入外部properties文件-->
+        <context:property-placeholder location="db.properties"/>
+
+        <!--托管ComboPooledDataSource-->
+        <bean id="ds" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+                <property name="driverClass" value="${driverClass}"/>
+                <property name="jdbcUrl" value="${jdbcUrl}"/>
+                <property name="user" value="${user}"/>
+                <property name="password" value="${password}"/>
+        </bean>
+
+        <!--托管runner-->
+        <bean id="runner" class="org.apache.commons.dbutils.QueryRunner">
+                <constructor-arg name="ds" ref="ds"/>
+        </bean>
+
+        <!--托管AccountDaoImpl-->
+        <bean id="accountDao" class="com.itheima.dao.impl.AccountDaoImpl">
+                <property name="queryRunner" ref="runner"/>
+        </bean>
+        <!--托管 托管AccountServiceImpl-->
+        <bean id="accountService" class="com.itheima.service.impl.AccountServiceImpl">
+                <property name="accountDao" ref="accountDao"/>
+        </bean>
+        <!--托管dao层-->
+
+</beans>

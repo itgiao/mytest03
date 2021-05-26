@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--托管服务层实现类
+    把实现类交给spring来管理
+    调用set
+    -->
+
+    <!--UserServiceImpl01的配置-->
+   <!-- <bean id="us01" class="com.itheima.service.impl.UserServiceImpl01">
+        <property name="address" value="深圳湾一号"/>
+        <property name="userDao" ref="userDao"/>
+    </bean>
+    <bean id="userDao" class="com.itheima.dao.impl.UserDaoImpl"/>-->
+    <!--构造方法的配置文件-->
+    <!--<bean id="us02" class="com.itheima.service.impl.UserServiceImpl02">
+        <constructor-arg name="adress" value="江西"/>
+        <constructor-arg name="userDao" ref="userDao"/>
+    </bean>
+    <bean id="userDao" class="com.itheima.dao.impl.UserDaoImpl"/>-->
+    <!--p名称命名空间-->
+    <bean id="us03" class="com.itheima.service.impl.UserServiceImpl03" p:address="北京"
+     p:userDao-ref="userDao"/>
+    <bean id="userDao" class="com.itheima.dao.impl.UserDaoImpl"/>
+
+
+</beans>

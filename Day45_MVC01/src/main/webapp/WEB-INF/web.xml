@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<!--配置前端控制器-->
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>
+			org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<!--配置springMvc.xml配置文件路径-->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:springmvc.xml</param-value>
+		</init-param>
+		<!--s设置这个servlet在启动项目的时候就初始化，就创建dispatcher对象-->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<!--要关联上springmvc。xml
+	当dispatcher初始化是，执行啦init方法的时候，就会解读spring。xml文件
+	由于现在是web项目，项目一启动就会加载web。xml文件-->
+
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<!--把前端控制器设置为 默认的处理器（覆盖Tomcat默认的处理器）-->
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+</web-app>

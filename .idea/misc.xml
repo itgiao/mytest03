@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/day38_mvc02" />
+    <file type="web" url="file://$PROJECT_DIR$/Day38_面面" />
+    <file type="web" url="file://$PROJECT_DIR$/day39_mm" />
+    <file type="web" url="file://$PROJECT_DIR$/Day39_mmProgram" />
+    <file type="web" url="file://$PROJECT_DIR$/Day44_MVC" />
+    <file type="web" url="file://$PROJECT_DIR$/Day44_MVC01" />
+    <file type="web" url="file://$PROJECT_DIR$/Day44_MVC02" />
+    <file type="web" url="file://$PROJECT_DIR$/Day45_MVC01" />
+    <file type="web" url="file://$PROJECT_DIR$/Day45_MVC02" />
+    <file type="web" url="file://$PROJECT_DIR$/Day46_SpringMvc01" />
+    <file type="web" url="file://$PROJECT_DIR$/Day46_SpringMvc02" />
+    <file type="web" url="file://$PROJECT_DIR$/Day46_SpringMvc03" />
+    <file type="web" url="file://$PROJECT_DIR$/linkmanSys" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/Day39_mmProgram/pom.xml" />
+        <option value="$PROJECT_DIR$/day39_mm/pom.xml" />
+        <option value="$PROJECT_DIR$/Day38_面面/pom.xml" />
+        <option value="$PROJECT_DIR$/day38_mvc02/pom.xml" />
+        <option value="$PROJECT_DIR$/02_代码/day41_spring01/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<!--1. 配置过滤器-->
+	<filter>
+		<filter-name>char</filter-name>
+		<filter-class>com.itheima.mm.filter.CharchaterFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>char</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!--2. 配置导入进来的day38_mvc02的jar包里面的DispatcherServlet-->
+	<!--注册DispatcherServlet-->
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>com.Servlet.DispatcherServlet</servlet-class>
+
+		<!--配置初始化的参数，就是告诉这个servlet要扫描哪个包？-->
+		<init-param>
+			<param-name>packageName</param-name>
+
+			<!--这里的包的名字是唯一要修改的地址，因为现在的项目的包名和昨天的项目的包名不一样了-->
+			<param-value>com.itheima.mm.controller</param-value>
+		</init-param>
+
+
+		<!--让这个servlet初始化的时机提前到项目发布的时候-->
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+</web-app>
